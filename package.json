@@ -47,7 +47,7 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "deploy": "surge -p public -d https://fluentconf.surge.sh",
+    "deploy": "surge -p public -d https://fluentconfrrajali.surge.sh",
     "lint": "standard",
     "start": "hjs-dev-server",
     "server-render": "NODE_ENV=staging hjs-dev-server",
