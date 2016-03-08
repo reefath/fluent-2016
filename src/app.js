@@ -1,6 +1,6 @@
 import React from 'react';
 import LogIn from './pages/login';
-import WatchedReposPage from './pages/watched-repos';
+import WatchedReposPage from './pages/watched-repo';
 import Nav from './component/nav'
 import {connect} from 'react-redux'
 import NavHelper from 'react-internal-nav'
