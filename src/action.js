@@ -47,7 +47,7 @@ export const fetchTokenAndUser = (code) => {
     const clientId = config.clientId
     return (dispatch) => {
         dispatch({type: FETCH_TOKEN})
-        fetchHelper(`https://github-secret-keeper.herokuapp.com/${clientId}/${code}`)
+        fetchHelper(`https://redux-github.herokuapp.com/${clientId}/${code}`)
             .then((data) => {
                 const token = window.localStorage.token = data.access_token
                 dispatch({type: FETCH_TOKEN_SUCCESS, payload : token})
