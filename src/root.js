@@ -10,11 +10,13 @@ import ensurePolyfills from './helper/polyfills'
 
 const store = window.store = createStore()
 
-ensurePolyfills(()=>{
+ensurePolyfills(() => {
     if (window.location.pathname === '/auth/callback') {
         const query = qs.parse(window.location.search)
         console.log(query)
         store.dispatch(fetchTokenAndUser(query.code))
+        store.dispatch(updateUrl('/watched-repos', {replace:true}))
+    } else if (store.getState().me.token) {
         store.dispatch(updateUrl('/watched-repos', {replace:true}))
     }
 
