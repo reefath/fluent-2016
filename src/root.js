@@ -16,13 +16,9 @@ ensurePolyfills(() => {
         console.log(query)
         store.dispatch(fetchTokenAndUser(query.code))
         store.dispatch(updateUrl('/watched-repos', {replace:true}))
-    } else if (store.getState().me.token) {
-        store.dispatch(updateUrl('/watched-repos', {replace:true}))
+    } else if (!store.getState().me.token) {
+        store.dispatch(updateUrl('/', {replace:true}))
     }
-
-    //if(window.location.pathname === '/watched-repos') {
-    //    store.dispatch(fetchSubscriptions())
-    //}
 
     const setCurrentUrl = () => {
         store.dispatch(updateUrl(window.location.pathname))

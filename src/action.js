@@ -1,5 +1,6 @@
 import qs from 'query-string'
 import fetchHelper from './helper/fetch-helper'
+import config from './config'
 
 
 export const UPDATE_URL = 'UPDATE_URL'
@@ -14,7 +15,7 @@ export const DO_LOGIN = 'DO_LOGIN'
 export const doLogin = () => {
     return  (dispatch) => {
         const loginUrl = 'https://github.com/login/oauth/authorize?' + qs.stringify({
-                client_id: '34d32bcd940626d0d6f3',
+                client_id: config.clientId,
                 redirect_uri: `${window.location.origin}/auth/callback`,
                 scope: 'user, repo'
             })
@@ -43,7 +44,7 @@ export const FETCH_TOKEN_ERROR = 'FETCH_TOKEN_ERROR'
 
 export const fetchTokenAndUser = (code) => {
    // const clientId = 'e311b22dbf1d7abed0b6'
-    const clientId = '34d32bcd940626d0d6f3'
+    const clientId = config.clientId
     return (dispatch) => {
         dispatch({type: FETCH_TOKEN})
         fetchHelper(`https://github-secret-keeper.herokuapp.com/${clientId}/${code}`)

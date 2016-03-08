@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchSubscriptions} from '../action'
-import {requiresToken} from '../helper/requires-token'
+import requiresToken from '../helper/requires-token'
 
 const WatchedReposPage = React.createClass({
 
