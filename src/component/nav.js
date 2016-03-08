@@ -6,11 +6,9 @@ const Nav = (props) => {
     let userInfo
     if(userData) {
         userInfo = (
-            <span> {userData.name}<button>logout <button/></span>
+            <span> {userData.name}<button>logout </button></span>
         )
-    } else {
-
-     }
+    }
 
 
 
