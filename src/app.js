@@ -4,7 +4,7 @@ import WatchedReposPage from './pages/watched-repo';
 import Nav from './component/nav'
 import {connect} from 'react-redux'
 import NavHelper from 'react-internal-nav'
-import {updateUrl, doLogin, doLogout, fetchSubscriptions} from './action'
+import {updateUrl, doLogin, doLogout} from './action'
 import renderUrl from './helper/render-url'
 
 //const App = () => {
@@ -22,7 +22,7 @@ const App= (props) => {
     if (url === '/') {
         page = <LogIn doLogin={doLogin}/>
     } else if (url === '/watched-repos') {
-        page = <WatchedReposPage fetchSubscriptions={fetchSubscriptions}/>
+        page = <WatchedReposPage/>
     }
 
     if(url !== '/') {
@@ -49,8 +49,7 @@ const select = (state) => {
 const actionCreatorsToBind = {
     updateUrl,
     doLogin,
-    doLogout,
-    fetchSubscriptions
+    doLogout
 
 
 }

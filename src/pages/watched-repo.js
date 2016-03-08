@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchSubscriptions} from '../action'
+import {requiresToken} from '../helper/requires-token'
 
 const WatchedReposPage = React.createClass({
 
@@ -38,7 +39,8 @@ const WatchedReposPage = React.createClass({
 const select = (state) => {
     return {
         repos: state.watchedRepos.data,
-        loading: state.watchedRepos.loading
+        loading: state.watchedRepos.loading,
+        me: state.me
     }
 }
 
@@ -46,5 +48,6 @@ const actionsToBind = {
     fetchSubscriptions
 }
 
+const WrappedComponent= requiresToken(WatchedReposPage)
 
 export default connect(select, actionsToBind)(WatchedReposPage)
