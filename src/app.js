@@ -1,6 +1,10 @@
 import React from 'react';
 import LogIn from './pages/login';
 import Nav from './component/nav'
+import {connect} from 'react-redux'
+import NavHelper from 'react-internal-nav'
+import {updateUrl, doLogin} from './action'
+import renderUrl from './helper/render-url'
 
 //const App = () => {
 //    return (
@@ -8,11 +12,13 @@ import Nav from './component/nav'
 //    )
 //}
 
-const App= ({url}) => {
+const App= ({doLogin, updateUrl, url}) => {
     let page, nav
 
+    renderUrl(url)
+
     if (url === '/') {
-        page = <LogIn/>
+        page = <LogIn doLogin={doLogin}/>
     }
 
     if(url !== '/') {
@@ -20,13 +26,19 @@ const App= ({url}) => {
     }
 
     return(
-        <div>
+        <NavHelper onInternaNav={updateUrl}>
             {nav}
             <div className='container'>
                 {page}
             </div>
-        </div>
+        </NavHelper>
     )
 }
 
-export default App
+const select = (state) => {
+    return {
+        url: state.route.url
+    }
+}
+
+export default connect(select, {updateUrl, doLogin})(App)

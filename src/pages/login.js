@@ -17,14 +17,14 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-const LogIn = ()=>{
+const LogIn = ({doLogin})=>{
     return (
             <div className='login'>
                 <header role='banner'>
                     <h1>Watcher-Watcher</h1>
                 </header>
                 <div className='content'>
-                    <a className='button button-large login-button'>
+                    <a onClick={doLogin} className='button button-large login-button'>
                         <span className='mega-octicon octicon-mark-github'></span> Login with GitHub
                     </a>
                 </div>
