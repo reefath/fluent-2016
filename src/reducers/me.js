@@ -5,7 +5,15 @@ import {
     FETCH_TOKEN_SUCCESS}
     from '../action'
 
-const token = window.localStorage.token || ''
+let token= '', user= null
+
+try {
+    token = window.localStorage.token
+    user = JSON.parse(window.localStorage.user)
+} catch (e) {
+    //blowing up
+}
+
 const initialState = {
     data: null,
     token: token,

@@ -55,6 +55,7 @@ export const fetchUser =() =>{
     return(dispatch) => {
         fetchHelper('/user')
         .then((data)=>{
+                window.localStorage.user = JSON.stringify(data, null, 2)
                 dispatch({type: FETCH_USER_SUCCESS, payload : data})
             })
         .catch((error)=>{
