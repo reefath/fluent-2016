@@ -4,7 +4,7 @@ import WatchedReposPage from './pages/watched-repo';
 import Nav from './component/nav'
 import {connect} from 'react-redux'
 import NavHelper from 'react-internal-nav'
-import {updateUrl, doLogin, doLogout} from './action'
+import {updateUrl, doLogin, doLogout, fetchSubscriptions} from './action'
 import renderUrl from './helper/render-url'
 
 //const App = () => {
@@ -14,7 +14,7 @@ import renderUrl from './helper/render-url'
 //}
 
 const App= (props) => {
-    const {userData, doLogout, doLogin, updateUrl, url} = props
+    const {userData, doLogout, doLogin, updateUrl, url, fetchSubscriptions} = props
     let page, nav
 
     renderUrl(url)
@@ -22,7 +22,7 @@ const App= (props) => {
     if (url === '/') {
         page = <LogIn doLogin={doLogin}/>
     } else if (url === '/watched-repos') {
-        page = <WatchedReposPage/>
+        page = <WatchedReposPage getWatchRepos={fetchSubscriptions}/>
     }
 
     if(url !== '/') {
@@ -49,7 +49,9 @@ const select = (state) => {
 const actionCreatorsToBind = {
     updateUrl,
     doLogin,
-    doLogout
+    doLogout,
+    fetchSubscriptions
+
 
 }
 //mapstatetoprops

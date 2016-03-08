@@ -4,7 +4,7 @@ import App from './app'
 import './styles/main.styl'
 import createStore from './store'
 import { Provider } from 'react-redux'
-import {updateUrl, fetchTokenAndUser} from './action'
+import {updateUrl, fetchTokenAndUser, fetchSubscriptions} from './action'
 import qs from 'query-string'
 import ensurePolyfills from './helper/polyfills'
 
@@ -20,6 +20,9 @@ ensurePolyfills(() => {
         store.dispatch(updateUrl('/watched-repos', {replace:true}))
     }
 
+    //if(window.location.pathname === '/watched-repos') {
+    //    store.dispatch(fetchSubscriptions())
+    //}
 
     const setCurrentUrl = () => {
         store.dispatch(updateUrl(window.location.pathname))

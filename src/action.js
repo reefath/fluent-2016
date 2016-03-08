@@ -76,3 +76,21 @@ export const fetchUser =() =>{
             })
     }
 }
+
+//FETCH SUBSCRIPTIONS
+export const FETCH_SUBSCRIPTIONS = 'FETCH_SUBSCRIPTIONS'
+export const FETCH_SUBSCRIPTIONS_SUCCESS = 'FETCH_SUBSCRIPTIONS_SUCCESS'
+export const FETCH_SUBSCRIPTIONS_ERROR = 'FETCH_SUBSCRIPTIONS_ERROR'
+
+export const fetchSubscriptions=() => {
+    return(dispatch) => {
+        fetchHelper('/user/subscriptions')
+        .then((data)=>{
+                window.localStorage.userSubscriptions = JSON.stringify(data, null)
+                dispatch({type: FETCH_SUBSCRIPTIONS_SUCCESS, payload : data})
+            })
+        .catch((error)=>{
+                dispatch({type: FETCH_SUBSCRIPTIONS_ERROR, error})
+            })
+    }
+}
