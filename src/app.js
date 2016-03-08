@@ -3,7 +3,7 @@ import LogIn from './pages/login';
 import Nav from './component/nav'
 import {connect} from 'react-redux'
 import NavHelper from 'react-internal-nav'
-import {updateUrl, doLogin} from './action'
+import {updateUrl, doLogin, doLogout} from './action'
 import renderUrl from './helper/render-url'
 
 //const App = () => {
@@ -13,7 +13,7 @@ import renderUrl from './helper/render-url'
 //}
 
 const App= (props) => {
-    const {userData, doLogin, updateUrl, url} = props
+    const {userData,doLogout, doLogin, updateUrl, url} = props
     let page, nav
 
     renderUrl(url)
@@ -23,7 +23,7 @@ const App= (props) => {
     }
 
     if(url !== '/') {
-        nav =  <Nav userData={userData}/>
+        nav =  <Nav userData={userData} doLogout={doLogout}/>
     }
 
     return(
@@ -43,4 +43,11 @@ const select = (state) => {
     }
 }
 
-export default connect(select, {updateUrl, doLogin})(App)
+const actionCreatorsToBind = {
+    updateUrl,
+    doLogin,
+    doLogout
+
+}
+//mapstatetoprops
+export default connect(select, actionCreatorsToBind)(App)

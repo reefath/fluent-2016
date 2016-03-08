@@ -2,11 +2,11 @@ import React from 'react';
 import {render} from 'react-dom'
 
 const Nav = (props) => {
-    const {userData} = props
+    const {userData, doLogout} = props
     let userInfo
     if(userData) {
         userInfo = (
-            <span> {userData.name}<button>logout </button></span>
+            <span> {userData.name}<button onClick={doLogout}>logout </button></span>
         )
     }
 
