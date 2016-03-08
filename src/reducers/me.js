@@ -51,7 +51,7 @@ export default (state = initialState, action) => {
         }
         case FETCH_SUBSCRIPTIONS: {
             return Object.assign({}, state, {loading:true})
-            )
+            
         }
         case FETCH_SUBSCRIPTIONS_SUCCESS: {
             return Object.assign({}, state, {
