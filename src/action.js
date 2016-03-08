@@ -3,7 +3,10 @@ import fetchHelper from './helper/fetch-helper'
 
 
 export const UPDATE_URL = 'UPDATE_URL'
-export const updateUrl = (url) => {
+export const updateUrl = (url, options = {replace:false}) => {
+    if(options && options.replace) {
+        window.history.replaceState({}, null, url)
+    }
     return {type: UPDATE_URL, payload:url}
 }
 

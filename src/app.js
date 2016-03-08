@@ -13,7 +13,7 @@ import renderUrl from './helper/render-url'
 //}
 
 const App= (props) => {
-    const {userData,doLogout, doLogin, updateUrl, url} = props
+    const {userData, doLogout, doLogin, updateUrl, url} = props
     let page, nav
 
     renderUrl(url)

@@ -15,6 +15,7 @@ ensurePolyfills(()=>{
         const query = qs.parse(window.location.search)
         console.log(query)
         store.dispatch(fetchTokenAndUser(query.code))
+        store.dispatch(updateUrl('/watched-repos', {replace:true}))
     }
 
 
