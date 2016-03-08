@@ -1,16 +1,21 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {fetchSubscriptions} from '../action'
 
 const WatchedReposPage = React.createClass({
 
     componentDidMount: function() {
 
-       const repos = this.props.fetchSubscriptions()
+        this.props.fetchSubscriptions()
     },
     render() {
-
+        const {repos, loading} = this.props
         let content
-
-        if (repos.length) {
+        if(loading) {
+            content = (
+                <h3> fetching data...</h3>
+                    )
+        } else if (repos.length) {
             content = (
                 <div>
                     {repos.map((repo) => {
@@ -20,14 +25,26 @@ const WatchedReposPage = React.createClass({
             )
         }
 
-        return(
+        return (
             <div>
-                <h1> Watched Repos</h1>
-                {content}
+                <h1>Watched Repos</h1>
+                { content }
             </div>
-
         )
+
     }
 })
 
-export default WatchedReposPage
+const select = (state) => {
+    return {
+        repos: state.watchedRepos.data,
+        loading: state.watchedRepos.loading
+    }
+}
+
+const actionsToBind = {
+    fetchSubscriptions
+}
+
+
+export default connect(select, actionsToBind)(WatchedReposPage)

@@ -2,10 +2,8 @@ import {
     FETCH_USER,
     FETCH_USER_SUCCESS,
     FETCH_USER_ERROR,
-    FETCH_TOKEN_SUCCESS,
-    FETCH_SUBSCRIPTIONS,
-    FETCH_SUBSCRIPTIONS_SUCCESS,
-    FETCH_SUBSCRIPTIONS_ERROR}
+    FETCH_TOKEN_SUCCESS
+    }
     from '../action'
 
 let token= '', user= null
@@ -47,25 +45,6 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                     token: action.payload
                 }
-            )
-        }
-        case FETCH_SUBSCRIPTIONS: {
-            return Object.assign({}, state, {loading:true})
-            
-        }
-        case FETCH_SUBSCRIPTIONS_SUCCESS: {
-            return Object.assign({}, state, {
-                    loading:false,
-                    error: null,
-                    data: action.payload
-                }
-            )
-        }
-        case FETCH_SUBSCRIPTIONS_ERROR: {
-
-            return Object.assign({}, state, {
-                    loading:false,
-                    error: action.error}
             )
         }
     }

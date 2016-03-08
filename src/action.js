@@ -86,7 +86,6 @@ export const fetchSubscriptions=() => {
     return(dispatch) => {
         fetchHelper('/user/subscriptions')
         .then((data)=>{
-                window.localStorage.userSubscriptions = JSON.stringify(data, null)
                 dispatch({type: FETCH_SUBSCRIPTIONS_SUCCESS, payload : data})
             })
         .catch((error)=>{

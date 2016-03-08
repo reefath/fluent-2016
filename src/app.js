@@ -22,7 +22,7 @@ const App= (props) => {
     if (url === '/') {
         page = <LogIn doLogin={doLogin}/>
     } else if (url === '/watched-repos') {
-        page = <WatchedReposPage getWatchRepos={fetchSubscriptions}/>
+        page = <WatchedReposPage fetchSubscriptions={fetchSubscriptions}/>
     }
 
     if(url !== '/') {
