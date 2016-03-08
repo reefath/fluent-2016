@@ -21,6 +21,16 @@ export const doLogin = () => {
     }
 }
 
+//do logout
+export const DO_LOGOUT = 'DO_LOGOUT'
+export const doLogout = () => {
+    return(dispatch) => {
+        dispatch({type: DO_LOGOUT})
+        window.localStorage.clear()
+        window.location='/'
+    }
+}
+
 //fetch_token
 export const FETCH_TOKEN = 'FETCH_TOKEN'
 export const FETCH_TOKEN_SUCCESS = 'FETCH_TOKEN_SUCCESS'
