@@ -30,7 +30,7 @@ const App= (props) => {
     }
 
     return(
-        <NavHelper onInternaNav={updateUrl}>
+        <NavHelper onInternalNav={updateUrl}>
             {nav}
             <div className='container'>
                 {page}
